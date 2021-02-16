@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>CS133 Lab 4: Advanced Scripting and Regular Expressions</title>
+    <link rel="stylesheet" href="../lab.css">
+</head>
+
+
+
+
+<body>
+
+    <div class="title">
+        <h1>CS133 Lab 4: Advanced Scripting and Regular Expressions</h1>
+    </div>
+
+    <form class="outline_form">
+        <fieldset class="outline">
+            <legend class="outline_title">Outline</legend>
+            <label class="outline_label">
+                <input type="checkbox" name="" id="" />
+                <i class="check"></i>
+                <span>Advanced Scripting</span>
+            </label>
+            <label class="outline_label">
+                <input type="checkbox" name="" id="" />
+                <i class="check"></i>
+                <span>Regular Expressions</span>
+            </label>
+        </fieldset>
+    </form>
+
+    <br>
+
+
+    <div class="content1">
+        <h2>Lab 4: Advanced Scripting, Regular Expressions</h2>
+    </div>
+
+
+    <div class="c1">
+        In this lab, we learned the advanced scripting and enhanced our scripting abilities through functions.
+        We also learned the basic knowledge about regular expressions.
+
+    </div>
+
+    <div class="content1">
+
+        <h3>Main content</h3>
+
+    </div>
+
+    <div class="c1">
+        This part mainly records the exercises in lab:
+        <br>
+
+        <code>1. We learned the function in bash. There are two ways to declare a function in bash: <strong>function function_name{}</strong> or
+            <strong>function_name(){}</strong>. Then we knew the parameter in bash function. The first parameter as <strong>$1</strong>, the second
+            as <strong>$2</strong>, etc. After that, we tried to implement a function called fib that calculates the nth Fibonacci number.</code>
+
+
+        <br>
+
+        <code>2. We understood the file descriptors for <strong>stdin</strong>, <strong>stdout</strong>, and <strong>stder</strong>. And we tried the ls > myfiles.txt
+            and ls -lt | head command to see what I/O redirection is.</code>
+
+        <br>
+
+        <code>3. We used <strong>grep</strong> command to select lines. And we tried to select all lines that contain either echo or
+            printf in the infotutorial script using cat ./infotutorial | grep ‘echo | printf’ command. Then we tried to
+            ind all lines that contain a number using cat ./infotutorial | grep '[0-9]' command.</code>
+
+        <br>
+
+        <code>4. Then we knew the role of <strong>^</strong> , <strong>$</strong> and <strong>.</strong> In this command, ^ denotes the beginning of a line, $ means the
+            end of line and a dot matches any character. We replaced plus with + using sed 's/plus/+/g' .</code>
+
+        <br>
+
+        <code>5. We needed to use grep to find all the files and directories which are world readable. And I used
+            the ls -l | grep ^-r..r..r.. command to find that.</code>
+
+    </div>
+
+    <div class="content1">
+        <h3>
+            Common commands
+        </h3>
+    </div>
+
+    <div class="c1">
+        This part will intro some basic knowledge about advanced scripting and regular expressions:
+        <br>
+        <code>
+        <strong>[ ]</strong>: Match anything inside the square brackets for ONE character position, once and only once.
+            <br>
+        <strong>-</strong>: The - (dash) inside square brackets is the ‘range separator’ and allows us to define a range.
+            <br>
+        <strong>?</strong>: The ? (question mark) matches when the preceding character occurs 0 or 1 times only.
+            <br>
+        <strong>*</strong>: The * (asterisk or star) matches when the preceding character occurs 0 or more times.
+            <br>
+        <strong>+</strong>: The + (plus) matches when the preceding character occurs 1 or more times.
+            <br>
+        <strong>Sed</strong>: By using sed you can edit files even without opening it, which is much quicker way to
+        find and replace something in file, than first opening that file in vi Editor and then changing it.</code>
+    </div>
+
+    <div class="content1">
+        <h3>Learning and thinking</h3>
+    </div>
+
+    <div class="c1">
+        This part mainly includes the significance of what I have learned for the future development, as well as my reflection:
+        <br>
+
+        <code>1. Using functions is very helpful for script processing. Advanced script and regular expression learning help to complete the work eﬀiciently in batch.
+
+            <br>
+            2. The advantage of this material is that it is comprehensive and practical. The weak point is that the material is not easy to understand why. Therefore, we need to search for other relevant materials.</code>
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="content1">
+        <h2>Advanced Scripting</h2>
+    </div>
+    <div class="c1">
+
+        <span><strong>Case Statement</strong></span>
+        <br>
+
+        <span><code>The case statement is a shell expression used in order to match patterns and execute matching conditions.</code></span>
+        <br>
+
+        <pre class="sample"><code><span class="redtext">case [pattern] in <br>    option1) <br>        COMMAND <br>        ;;<br>    option2) <br>        COMMAND <br>        ;;<br>    *) <br>        COMMAND<br>        ;; <br>esac </span></code></pre>
+
+
+        <span><code>Example:</code></span>
+        <br>
+        <pre class="sample"><code>case "${1}" in <br>    CS133) <br>        echo "You chose CS133" <br>        ;; <br>    CS132) <br>        echo "You chose CS132" <br>        ;; <br>    *) <br>        echo "You provided an unknown command to the script" <br>        ;;<br>esac</code></pre>
+
+
+
+
+        <span><strong>Functions</strong></span>
+        <br>
+
+        <span><code>Bash functions usually store multiple commands and they are used in order to factorize and reuse code in multiple places.</code></span>
+
+
+        <pre class="sample"><code><span class="redtext">#!/bin/bash <br><br>my_function(){ <br><br>    COMMAND1 <br>    COMMAND2 <br>    COMMAND3 <br><br>}</span></code></pre>
+
+        <pre class="sample"><code><span class="redtext">#!/bin/bash <br><br>function my_function{ <br><br>    COMMAND1 <br>    COMMAND2 <br>    COMMAND3 <br><br>}</span></code></pre>
+
+        <span><code>Now that your Bash functions are defined, you will need to call them in order to
+                execute the code that they store. In order to execute Bash functions, simply write the function name
+                where you want them to be called. Then, execute this script.</code></span>
+
+        <br>
+        <br>
+
+
+        <span><strong>Bash Functions Arguments</strong></span>
+        <br>
+
+        <span><code>Having Bash functions just executing simple static commands is not very beneficial. In most cases,
+                you want to be able to pass function arguments in order to dynamically execute functions. In a Bash script,
+                when you want to access the arguments provided to the script, you can use the '${1}', '${2}' and so on notation.</code></span>
+
+
+        <br>
+
+        <span><code>Example:</code></span>
+        <br>
+
+        <pre class="sample"><code>#!/bin/bash <br><br> repeat() { <br>    echo "You said ${1}" <br>} <br><br> repeat "Linux" </code></pre>
+
+        <pre class="sample"><code> $ chmod +x script <br> $ ./script <br> "You said Linux"</code></pre>
+
+
+        <span><strong>I/O Redirection</strong></span>
+        <br>
+        <span><code>Input/Output (I/O) Redirection is another important issue when scripting in a UNIX environment.
+                There are always three default files open, stdin (the keyboard), stdout (the screen), and stderr (error
+                messages output to the screen). These, as well as any other open files, can be redirected. Redirection
+                simply means capturing output from a file, command, application or script, and sending it as input to
+                another file, command, application or script. Every open file gets assigned a file descriptor. The file
+                descriptors for stdin, stdout, and stderr are 0, 1, and 2, respectively.</code></span>
+
+
+        <span><code>Example:</code></span>
+        <br>
+
+        <pre class="sample"><code> $ ls > myfiles.txt </code></pre>
+
+        <pre class="sample"><code> $ ls -lt | head </code></pre>
+
+        <span><strong><code>Head</code></strong></span>
+        <br>
+
+        <span><code>It is the complementary of Tail command. The head command, as the name implies, print the top N
+                number of data of the given input. By default, it prints the first 10 lines of the specified files.
+                If more than one file name is provided then data from each file is preceded by its file name.</code></span>
+
+        <pre class="sample"><code><span class="redtext">head [OPTION]... [FILE]...</span></code></pre>
+
+        <span><code><strong>-n num:</strong> Prints the first 'num' lines instead of first 10 lines. num is mandatory to be specified in
+                command otherwise it displays an error.</code></span>
+        <br>
+
+        <span><code><strong>-c num:</strong> Prints the first 'num' bytes from the file specified. Newline count as a single character,
+                so if head prints out a newline, it will count it as a byte. num is mandatory to be specified in command
+                otherwise displays an error.</code></span>
+
+        <br>
+
+        <span><code>Example:</code></span>
+
+        <pre class="sample"><code> $ head myfiles.txt <br><br> Applications <br> CLionProjects <br> Creative Cloud Files <br> Desktop <br> Documents <br> Downloads <br> NetBeansProjects<br> Movies <br> Music <br> Library </code></pre>
+
+
+
+
+    </div>
+
+
+    <div class="content1">
+        <h2>Regular Expressions</h2>
+    </div>
+
+
+    <div class="c1">
+
+
+        <div class="c2">
+            <span><strong>Brackets, Ranges and Negation</strong></span>
+            <br>
+
+            <span><code><strong>[ ]</strong></code></span>
+            <br>
+
+            <span><code>Match anything inside the square brackets for ONE character position, once and only once. For
+                example, [12] means match the target to 1 and if that does not match then match the target to 2 while
+                [0123456789] means match to any character in the range 0 to 9.</code></span>
+
+
+            <br>
+            <span><code><strong>-</strong></code></span>
+            <br>
+
+            <span><code>The - (dash) inside square brackets is the 'range separator' and allows us to define a range,
+                in our example above of [0123456789] we could rewrite it as [0-9]. You can define more than one range
+                inside a list, for example, [0-9A-C] means check for 0 to 9 and A to C (but not a to c).</code></span>
+
+
+            <br>
+            <span><code><strong>^</strong></code></span>
+            <br>
+
+
+            <span><code>The ^ (circumflex or caret) inside square brackets negates the expression (we will see an alternate
+                use for the circumflex/caret outside square brackets later), for example, [^Ff] means anything except
+                upper or lower case F and [^a-z] means everything except lower case a to z.</code></span>
+
+
+            <br>
+            <br>
+
+            <span><strong>Positioning (or Anchors)</strong></span>
+            <br>
+
+
+            <span><code><strong>^</strong></code></span>
+            <br>
+
+            <span><code>The ^ (circumflex or caret) when not used inside square brackets (where it has a diffent meaning)
+                means look only at the beginning of the target string, for example, ^Win will not find Windows in STRING1
+                but ^Moz will find Mozilla.</code></span>
+
+            <br>
+
+            <span><code><strong>$</strong></code></span>
+            <br>
+
+
+            <span><code>
+                The $ (dollar) means look only at the end of the target string, for example, fox$ will find a match in
+                'silver fox' since it appears at the end of the string but not in 'the fox jumped over the moon'.</code></span>
+
+            <br>
+
+            <span><code><strong>.</strong></code></span>
+
+            <br>
+
+            <span><code>The . (period) means any character(s) in this position, for example, ton. will find tons,
+                tone and tonn in tonneau but not wanton because it has no following character.</code></span>
+
+            <br>
+            <br>
+
+
+
+            <span><strong>Iteration 'metacharacters'</strong></span>
+            <br>
+
+            <span><code><strong>?</strong></code></span>
+            <br>
+
+            <span><code>The ? (question mark) matches when the preceding character occurs 0 or 1 times only, for example,
+                colou?r will find both color (u is found 0 times) and colour (u is found 1 time).</code></span>
+
+
+            <br>
+
+            <span><code><strong>*</strong></code></span>
+            <br>
+
+            <span><code>The * (asterisk or star) matches when the preceding character occurs 0 or more times, for example,
+                tre* will find tree (e is found 2 times) and tread (e is found 1 time) and trough (e is found 0 times
+                and thus returns a match only on the tr).</code></span>
+
+            <br>
+
+            <span><code><strong>+</strong></code></span>
+            <br>
+
+            <span><code>	The + (plus) matches when the preceding character occurs 1 or more times, for example, tre+
+                will find tree (e is found 2 times) and tread (e is found 1 time) but NOT trough (0 times).</code></span>
+
+            <br>
+
+
+            <span><code><strong>{n}</strong></code></span>
+            <br>
+
+
+            <span><code>You can specify how many characters you want using {n}.</code></span>
+
+            <br>
+
+
+            <span><code><strong>{n,m}</strong></code></span>
+
+            <br>
+
+            <span><code>Matches when the preceding character occurs at least n times but not more than m times,
+                for example, ba{2,3}b will find baab and baaab but NOT bab or baaaab. Values are enclosed in
+                braces (curly brackets).</code></span>
+
+
+            <br>
+
+            <span><code><strong>{n,}</strong></code></span>
+
+            <br>
+            <span><code>Matches when the preceding character occurs at least n times, for example, ba{2,}b will find
+                'baab', 'baaab' or 'baaaab' but NOT 'bab'. Values are enclosed in braces (curly brackets).</code></span>
+
+
+        </div>
+
+        <br>
+
+        <span><strong>Sed Command</strong></span>
+
+        <br>
+
+        <span><code>By using SED you can edit files even without opening it, which is much quicker way to find and
+                replace something in file, than first opening that file in VI Editor and then changing it.</code></span>
+
+
+
+        <pre class="sample"><code><span class="redtext">sed OPTIONS... [SCRIPT] [INPUTFILE...] </span></code></pre>
+
+        <span><code>Example:</code></span>
+        <br>
+        <span><code>
+                <strong>Replacing or substituting string: </strong>Sed command is mostly used to replace the text in a file.
+                The below simple sed command replaces the word “unix” with "linux" in the file.</code></span>
+        <pre class="sample"><code> $ sed 's/unix/linux/' geekfile.txt</code></pre>
+
+
+        <span><code>
+                <strong>Replacing the nth occurrence of a pattern in a line: </strong>Use the /1, /2 etc flags to replace
+                the first, second occurrence of a pattern in a line. The below command replaces the second occurrence of
+                the word "unix" with "linux" in a line.</code></span>
+        <pre class="sample"><code> $ sed 's/unix/linux/2' geekfile.txt</code></pre>
+
+        <span><code>
+                <strong>Replacing all the occurrence of the pattern in a line: </strong>The substitute flag /g (global
+                replacement) specifies the sed command to replace all the occurrences of the string in the line.</code></span>
+
+        <pre class="sample"><code> $ sed 's/unix/linux/g' geekfile.txt</code></pre>
+
+
+
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+</body>
+
+
+
+
+
+
+
+</html>

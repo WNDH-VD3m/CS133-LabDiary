@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>CS133 Lab 5: Scripting Exercise</title>
+    <link rel="stylesheet" href="../lab.css">
+</head>
+
+
+
+
+<body>
+
+    <div class="title">
+        <h1>CS133 Lab 5: Scripting Exercise</h1>
+    </div>
+
+    <form class="outline_form">
+        <fieldset class="outline">
+            <legend class="outline_title">Outline</legend>
+            <label class="outline_label">
+                <input type="checkbox" name="" id="" />
+                <i class="check"></i>
+                <span>Task 1  Counting files and directories</span>
+            </label>
+            <label class="outline_label">
+                <input type="checkbox" name="" id="" />
+                <i class="check"></i>
+                <span>Task 2  Listing and Changing the permissions</span>
+            </label>
+        </fieldset>
+    </form>
+
+    <br>
+
+
+    <div class="content1">
+        <h2>Lab 5: Scripting Exercise</h2>
+    </div>
+
+    <div class="c1">
+        In this lab, we completed two tasks. Task 1 — counting files and directories and Task 2 — listing and changing the permissions.
+    </div>
+
+    <div class="content1">
+        <h3>Main content</h3>
+    </div>
+
+    <div class="c1">
+        This part mainly records the exercises in lab:
+        <br>
+
+
+        <code>
+            1. In the task1, we made a shell script to display the number of files, directories(included hidden
+            files and directories) in a given directory.
+            <br>
+            2. The task2 required that files and directories with wrong permissions should be displayed and be corrected.
+        </code>
+
+    </div>
+
+    <div class="content1">
+        <h3>Learning and thinking</h3>
+    </div>
+
+    <div class="c1">
+        This part mainly includes the significance of what I have learned for the future development, as well as my reflection:
+        <br>
+        <code>1. More practice is very helpful for us to master script knowledge.
+            <br>
+        2. The weak point is although the task1 code can work, there are many things in it that I cannot fully understand
+        why I need do that. In task2, my code can list the wrong permissions, but it cannot correct them. I did not
+        pass the exercise of lab5 marking point5.2. Therefore, in the later study, I need to improve this part of knowledge.</code>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="content1">
+        <h2>Task 1  Counting files and directories</h2>
+    </div>
+
+
+    <div class="c1">
+
+        <span>Exercise 1: </span>
+
+        <br>
+        <span><code>In the task1, I made a shell script to display the number of files, directories(included hidden
+                files and directories) in a given directory.</code></span>
+
+        <br>
+
+
+        <span>My Code: </span>
+        <pre class="sample"><code>#!/bin/bash
+    echo "Type the directory:"
+    read directory
+    path=$(find ./ -name $directory)
+    cd $path
+    files=$(ls -lR | grep "^-" | wc -l)
+    directories=$(ls -lR | grep "^d" | wc -l)
+    all_files=$(ls -A -lR | grep "^-" | wc -l)
+    all_directories=$(ls -A -lR | grep "^d" | wc -l)
+    hide_files=$(($all_files-$files))
+    hide_directories=$(($all_directories-$directories))
+    echo -n "Files found:$files"
+    echo "(plus $hide_files)"
+    echo -n "Directories found:$directories"
+    echo "(plus $hide_directories)"
+    echo "total files and directories : $(($all_files+$all_directories))"</code></pre>
+
+
+        <span>Weaknesses: </span>
+        <br>
+
+        <span><code>Although the code works, there are many things in it that I cannot fully understand why I need do that.</code></span>
+
+
+
+    </div>
+
+
+    <div class="content1">
+        <h2>Task 2  Listing and Changing the permissions</h2>
+    </div>
+
+
+    <div class="c1">
+
+        <span>Exercise 2: </span>
+
+        <br>
+        <span><code>The task2 required that files and directories with wrong permissions should be displayed. </code></span>
+
+        <br>
+
+
+        <span>My Code: </span>
+
+        <pre class="sample"><code>
+    #!/bin/bash
+    echo "Type the directory:"
+    read directory
+    directory=$(find ./ -name $directory)
+    cd $directory
+    files=$(ls -lR | grep "^-" | wc -l)
+    directories=$(ls -lR | grep "^d" | wc -l)
+    all_files=$(ls -A -lR | grep "^-" | wc -l)
+    all_directories=$(ls -A -lR | grep "^d" | wc -l)
+    hide_files=$(($all_files-$files))
+    hide_directories=$(($all_directories-$directories))
+    echo -n "Files found:$files"
+    echo "(plus $hide_files)"
+    echo -n "Directories found:$directories"
+    echo "(plus $hide_directories)"
+    echo "total files and directories : $(($all_files+$all_directories))"
+    touch files.txt
+    ls -A -lR|grep "^-">files.txt
+    touch dir.txt
+    ls -l ..|grep '$directory' >dir.txt
+    ls -A -lR|grep "^d">>dir.txt
+    touch store.txt
+    echo "Permissions for "
+    awk '{print $NF,$1}' dir.txt
+    awk '{print $NF,$1}' files.txt
+    dirname=$(awk '{print $NF}' dir.txt)
+    Permissiondir=$(awk '{print $1}' dir.txt)
+    echo $dirname >dir.txt
+    echo $Permissiondir >store.txt
+    filesname=$(awk '{print $NF}' files.txt)
+    Permissionfiles=$(awk '{print $1}' files.txt)
+    echo $filesname >files.txt
+    k=1
+    for((i=1 ; i <= $all_directories ; i++))
+    do
+        name=$(awk '{print $('$k')}' dir.txt)
+        Permission=$(awk '{print $('$k')}' store.txt)
+        if [ "$Permission" != "drwxr-xr-x" ]
+        then
+            echo "Directory" $name "has the wrong permission:" $Permission
+            if (($k == 1))
+            then
+                cd ..
+                chmod 755 $directory
+                cd $directory
+                echo "This has been changed to: drwxr-xr-x"
+                break 2
+            fi
+            chmod 755 $name
+            echo "This has been changed to: drwxr-xr-x"
+        fi
+        ((k++))
+    done
+    echo $Permissionfiles >store.txt
+    x=1
+    for((i=1 ; i <= all_files ; i++))
+    do
+        name=$(awk '{print $('$x')}' files.txt)
+        Permission=$(awk '{print $('$x')}' store.txt)
+        if [[ !("$Permission" == -rw-r--r--*) ]]
+        then
+            path=$(find ./ -name $name)
+            echo "File" $path "has the wrong permission:" $Permission
+            chmod 644 $path
+            echo "This has been changed to: -rw-r--r--"
+        fi
+        ((x++))
+    done</code></pre>
+
+
+
+        <span>Weaknesses: </span>
+        <br>
+
+        <span><code>Although my code can list the wrong permissions, it cannot correct them. I did not pass the exercise of lab5 marking point5.2.</code></span>
+
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+
+
+
+
+
+
+</html>

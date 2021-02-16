@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>CS133 Lab 7: LaTeX Exercise</title>
+    <link rel="stylesheet" href="../lab.css">
+    <link rel="stylesheet" href="../labimage.css">
+
+
+</head>
+
+
+<body>
+
+    <div class="title">
+        <h1>CS133 Lab 7: LaTeX Exercise</h1>
+    </div>
+
+    <form class="outline_form">
+        <fieldset class="outline">
+            <legend class="outline_title">Outline</legend>
+            <label class="outline_label">
+                <input type="checkbox" name="" id="" />
+                <i class="check"></i>
+                <span>BibTeX</span>
+            </label>
+            <label class="outline_label">
+                <input type="checkbox" name="" id="" />
+                <i class="check"></i>
+                <span>Document and Bibliography Styles</span>
+            </label>
+            <label class="outline_label">
+                <input type="checkbox" name="" id="" />
+                <i class="check"></i>
+                <span>Source Code Listings</span>
+            </label>
+        </fieldset>
+    </form>
+
+    <br>
+
+    <div class="content1">
+        <h2>Lab7: LaTeX Exercise</h2>
+    </div>
+
+
+    <div class="c1">
+        In this lab, we learned how to use BibTeX to keep our references separated in a kind of database file.
+    </div>
+
+    <div class="content1">
+        <h3>Main content</h3>
+    </div>
+
+    <div class="c1">
+        This part mainly records the exercises in lab:
+        <br>
+        <code>
+            1. We created a file called <strong>bibliography.bib</strong> and added the label, author, title, year, journal, volume,
+            number and pages of the article we wanted to cite into it. Then we use the <strong>cite</strong> command in our LaTeX file
+            to cite the article. Then, we needed to add <strong>bibliographystyle</strong> and <strong>bibliography</strong> into our document. Finally,
+            the TeX compiled our LaTeX document, which needed to be compiled four times.
+            <br>
+            2. We learned how to set the document style to that of the IEEE and use the IEEE bibliography style. And we
+            learned how to include the actual source code from a program in our LaTeX document using the listings package.
+        </code>
+
+    </div>
+
+
+    <div class="content1">
+        <h3>Common commands</h3>
+    </div>
+
+
+    <div class="c1">
+        This part will intro some basic knowledge about BibTeX:
+        <br>
+        <code>
+            <strong>booktitle:</strong> the title of the book, if only part of it is being cited.
+            <br>
+            <strong>journal:</strong> the journal or magazine the work was published in.
+            <br>
+            <strong>volume:</strong> the volume of a journal or multi-volume book. <br>
+            <strong>number:</strong> the issue number of a journal, magazine, or tech-report, if applicable.
+
+        </code>
+
+    </div>
+
+    <div class="content1">
+        <h3>Learning and thinking</h3>
+    </div>
+
+    <div class="c1">
+        This part mainly includes the significance of what I have learned for the future development, as well as my reflection:
+        <br>
+
+        <code>1. Using BibTeX for referencing is useful for our later academic report. <br>
+            2. The advantage of this material is that it is easy to understand and we can quickly learn how to
+            use BibTeX in our document. The weak point is that the exercises of different citation types are less.
+            Therefore, we need more practice in our daily LaTeX writing.</code>
+    </div>
+
+
+
+
+
+    <div class="content1">
+        <h2>BibTeX</h2>
+    </div>
+
+    <div class="c1">
+
+        <span>In this lab, I cited a BIbTeX article in my LaTeX.</span>
+        <br>
+        <span><code>BibTeX is an extension to LaTeX allowing us to keep our references separated in a kind of database file.</code></span>
+        <br>
+
+
+        <strong>My LaTeX:</strong>
+
+        <br>
+
+
+
+        <pre class="sample"><code>\documentclass{IEEEtran}
+    \usepackage{cite}
+    \title{Machine Learing}
+    \author{Yijie Geng}
+    \date{\today}
+
+    \begin{document}
+    \maketitle
+    \section{Introduce to Machine Learing}
+
+    In section 2 we discuss the Statistical Query Model, our summation form framework and an example \cite{396988}
+    of its application. In section 3 we describe how our framework may be implemented in a Googlelike map-reduce paradigm. In section 4 we choose 10 frequently used machine learning algorithms
+    as examples of what can be coded in this framework. \cite{199317} This is followed by experimental runs on 10
+    moderately large data sets in section 5, where we show a good match to our theoretical computational
+    complexity results. Basically, we often achieve linear speedup in the number of cores. Section 6
+    concludes the paper \cite{10.1257/jep.31.2.87}
+
+    \bibliography{ref}
+    \bibliographystyle{ieeetr}
+
+    \end{document}</code></pre>
+
+        <strong>ref.bib</strong>
+
+        <pre class="sample"><code>@INPROCEEDINGS{396988,  author={G. {Holmes} and A. {Donkin} and I. H. {Witten}},  booktitle={Proceedings of ANZIIS '94 - Australian New Zealnd Intelligent Information Systems Conference},   title={WEKA: a machine learning workbench},   year={1994},  volume={},  number={},  pages={357-361},  doi={10.1109/ANZIIS.1994.396988}}
+    @inproceedings {199317,
+    author = {Mart{\'\i}n Abadi and Paul Barham and Jianmin Chen and Zhifeng Chen and Andy Davis and Jeffrey Dean and Matthieu Devin and Sanjay Ghemawat and Geoffrey Irving and Michael Isard and Manjunath Kudlur and Josh Levenberg and Rajat Monga and Sherry Moore and Derek G. Murray and Benoit Steiner and Paul Tucker and Vijay Vasudevan and Pete Warden and Martin Wicke and Yuan Yu and Xiaoqiang Zheng},
+    title = {TensorFlow: A System for Large-Scale Machine Learning},
+    booktitle = {12th {USENIX} Symposium on Operating Systems Design and Implementation ({OSDI} 16)},
+    year = {2016},
+    isbn = {978-1-931971-33-1},
+    address = {Savannah, GA},
+    pages = {265--283},
+    url = {https://www.usenix.org/conference/osdi16/technical-sessions/presentation/abadi},
+    publisher = {{USENIX} Association},
+    month = nov,
+    }
+    @article{10.1257/jep.31.2.87,
+    Author = {Mullainathan, Sendhil and Spiess, Jann},
+    Title = {Machine Learning: An Applied Econometric Approach},
+    Journal = {Journal of Economic Perspectives},
+    Volume = {31},
+    Number = {2},
+    Year = {2017},
+    Month = {May},
+    Pages = {87-106},
+    DOI = {10.1257/jep.31.2.87},
+    URL = {https://www.aeaweb.org/articles?id=10.1257/jep.31.2.87}}</code></pre>
+
+
+        <br>
+        <br>
+        <div class="c1image">
+            <img src="../images/latex2.jpg" alt="">
+        </div>
+
+        <br>
+
+
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+
+
+
+
+
+
+</html>

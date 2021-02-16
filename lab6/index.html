@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>CS133 Lab 6: LaTeX</title>
+    <link rel="stylesheet" href="../lab.css">
+    <link rel="stylesheet" href="../labimage.css">
+
+
+</head>
+
+
+
+
+<body>
+
+    <div class="title">
+        <h1>CS133 Lab 6: LaTeX</h1>
+    </div>
+
+    <form class="outline_form">
+        <fieldset class="outline">
+            <legend class="outline_title">Outline</legend>
+            <label class="outline_label">
+                <input type="checkbox" name="" id="" />
+                <i class="check"></i>
+                <span>First LaTeX Document</span>
+            </label>
+            <label class="outline_label">
+                <input type="checkbox" name="" id="" />
+                <i class="check"></i>
+                <span>Document Class</span>
+            </label>
+            <label class="outline_label">
+                <input type="checkbox" name="" id="" />
+                <i class="check"></i>
+                <span>Sectioning Your Content</span>
+            </label>
+            <label class="outline_label">
+                <input type="checkbox" name="" id="" />
+                <i class="check"></i>
+                <span>Laying Out Content</span>
+            </label>
+            <label class="outline_label">
+                <input type="checkbox" name="" id="" />
+                <i class="check"></i>
+                <span>Figures</span>
+            </label>
+            <label class="outline_label">
+                <input type="checkbox" name="" id="" />
+                <i class="check"></i>
+                <span>Mathematics and Algorithms</span>
+            </label>
+        </fieldset>
+    </form>
+
+    <br>
+
+    <div class="content1">
+        <h2>Lab 6: LaTeX</h2>
+    </div>
+
+
+    <div class="c1">
+
+        In this lab, we learned the basic syntax of LaTeX and created our LaTeX document.
+    </div>
+
+    <div class="content1">
+        <h3>Main content</h3>
+    </div>
+
+    <div class="c1">
+        This part mainly records the exercises in lab:
+        <br>
+
+        <code>1. We learned the basic layout of a TeX file and knew comments are denoted by a preceding % symbol.
+            And we studied the <strong>documentclass</strong> command, which has many options include <strong>article, report, book, letter.</strong></code>
+        <br>
+
+        <code>2. We tried to create sections within our documents using <strong>\section</strong> and <strong>\subsection</strong> commands. And we also
+            tried to add an appendices section using appendix command. Then we created a numbered list and a bullet
+            pointed list using enumerate and itemize respectively.
+        </code>
+
+        <br>
+
+        <code>3. We needed to import a package called graphic using the <strong>\usepackage graphicx command</strong>. Then we could
+            insert a graphic using <strong>\includegraphics[width=XXmm]{Path/To/File.png} </strong>command. Besides, we learned that
+            using the center environment could also achieve similar result.</code>
+
+        <br>
+        <code>4. We tried to insert mathematical formula in our document. And we learned how to write an algorithm using LaTeX.
+            To start writing an algorithm we needed to create an algorithmic environment using <strong>\begin{algorithmic} ... \end{algorithmic}</strong>
+            and import a package called algorithmic using usepackage algorithmic. Then we learned
+            how to reference the equations and figures we have produced.</code>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="content1">
+        <h2>First LaTeX Document</h2>
+    </div>
+
+
+    <div class="c1">
+        In this lab, I created my first LaTeX document.
+        <br>
+        <strong>My TeX: </strong>
+        <br>
+
+
+        <pre class="sample"><code>\documentclass[12pt,twocolumn]{article}
+    \usepackage{graphicx}
+    \usepackage{algorithmic}
+    \usepackage{algorithm}
+    \title{Welcome to LaTeX}
+    \author{Yijie Geng}
+    \date{\today}
+    \begin{document}
+    \maketitle
+    \section{How to make a title}
+    In an article, making a title is a very important thing. Therefore, how to make a Title in LaTeX?
+        \begin{enumerate}
+        \item Preparation
+        \item Input
+        \item Output
+        \end{enumerate}
+    \subsection{Syntax}
+    We can use ...
+        \begin{quote}
+        John said "you must use back ticks and apostrophes!''
+        \end{quote}
+    \subsubsection{Note}
+    Note
+        \begin{itemize}
+        \item Do not forget
+        \item Tab
+        \end{itemize}
+    \subsection{Example}
+    For example, ...
+        \begin{figure}[h]
+        \begin{center}
+        \includegraphics[width=60mm]{/Users/apple/Desktop/deer.jpg}
+        \caption{A deer}
+        \label{reflabel}
+        \end{center}
+        \end{figure}
+        \begin{equation}
+        a^{2} - b^{2} = (a - b)(a + b)
+        \label{diff2squares}
+        \end{equation}
+    \subsection{Code}
+        \begin{algorithm}
+            \begin{algorithmic}
+                \FOR{(i=0;i&#60;=n;i++)}
+                    \IF{(i\%2==0)}
+                        \STATE{System.out.println(i)}
+                    \ENDIF
+                \ENDFOR
+            \end{algorithmic}
+        \caption{&#60;print all even numbers from 0 to n&#62;}
+        \label{&#60;print&#62;}
+        \end{algorithm}
+    \end{document}</code></pre>
+
+
+
+        <div class="c1image">
+            <img src="../images/latex1.jpg" alt="">
+        </div>
+
+        <br>
+
+
+
+    </div>
+
+
+
+
+    <div class="content1">
+        <h2>Further Resources: </h2>
+    </div>
+
+    <div class="c1">
+        <code><a class="link" href="https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes#Captions.2C_labels_and_references_2" target="_blank" style="color:#404040;">Learn LaTeX in 30 minutes</a></code>
+        <br>
+        <br>
+        <code><a class="link" href="https://en.wikibooks.org/wiki/LaTeX/Mathematics" target="_blank" style="color:#404040;">LaTeX / Mathematics ------ Wikibooks</a></code>
+    </div>
+
+
+
+
+
+</body>
+
+
+
+
+
+
+
+</html>
+

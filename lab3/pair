@@ -1,0 +1,30 @@
+if(($# < 2))
+then
+	echo "Error"
+	exit 1
+fi
+x=0
+sum=0
+for a in $*
+do
+	case $a in
+	  [0-9]*)
+	  sum=$(expr $sum + $a)
+	  x=$(($x + 1))
+	  if(($a > 9))
+	  then
+		echo "Error"
+		exit 2
+	  fi
+	  if(($((x%2))==0)) 
+	  then
+		echo "OK"
+		echo "$sum"
+		sum=0
+	  fi
+	  ;;
+	*)
+	  echo "error">&2; exit 2;;
+	  esac
+done
+exit 0

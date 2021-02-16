@@ -1,0 +1,13 @@
+#!/bin/sh
+sum=0
+
+for a in $*
+do
+     case $a in
+     [0-9]*) ;;
+     *) echo "Arguments must be numbers.">&2; exit 1;;
+     esac
+     sum=$(expr $sum + $a )
+done
+echo "$sum"
+exit 0

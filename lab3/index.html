@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>CS133 Lab3: Linux Processes and Scripting</title>
+    <link rel="stylesheet" href="../lab.css">
+</head>
+
+
+
+
+<body>
+
+    <div class="title">
+        <h1>CS133 Lab3: Linux Processes and Scripting</h1>
+    </div>
+
+    <form class="outline_form">
+        <fieldset class="outline">
+            <legend class="outline_title">Outline</legend>
+            <label class="outline_label">
+                <input type="checkbox" name="" id="" />
+                <i class="check"></i>
+                <span>Processes</span>
+            </label>
+            <label class="outline_label">
+                <input type="checkbox" name="" id="" />
+                <i class="check"></i>
+                <span>Scripting</span>
+            </label>
+        </fieldset>
+    </form>
+
+    <br>
+
+
+    <div class="content1">
+        <h2>Lab3: Linux Processes and Scripting</h2>
+    </div>
+
+    <div class="c1">
+        In this lab, we learned how the processes running in our Linux environment can be controlled and understood the basics of scripting.
+    </div>
+
+
+    <div class="content1">
+        <h3>Main content</h3>
+    </div>
+
+    <div class="c1">
+        This part mainly records the exercises in lab:
+
+        <br>
+
+        <code>1. I used <strong>ps</strong> command to inspect the current running processes associated with our username. Then, we
+            added the <strong>&</strong> operator at the end of a command to open a process in the background of the terminal. This
+            means we can still use the terminal while also having the process running in the background.</code>
+        <br>
+
+        <code>2. Then we tried <strong>ps</strong> combined with a pipe <strong>(|)</strong> and <strong>grep</strong> to find the PID of the process running in a particular
+            terminal. And we also found that we could also find a specific PID by using <strong>pgrep</strong> command. Then we tried to
+            use <strong>pkill</strong>, <strong>xkill</strong> and <strong>kill -KILL</strong> to kill the crashed processes.</code>
+
+        <br>
+
+        <code>3. We put a copy of the Java source file from Lab 3 Resources in our lab3 directory. And then we wrote a
+            script called runloop in our lab3 directory. After we changed the permissions of this script, we tried
+            to run this script using <strong>./runloop &</strong></code>
+
+        <br>
+
+        <code>4. We wrote a script that could add together all the arguments given to it. To begin with this script
+            could just add 3 numbers, we changed the script later, and it can add 4 numbers. After that, we also wrote
+            a script that could multiply two arguments together.</code>
+
+
+        <br>
+        <code>5. The we added an <strong>if</strong> statement to check whether the number of arguments is 0. We used a <strong>for</strong> loop
+            to make our script more flexible. The for loop could iterate over the arguments so that the script could
+            multiply the arguments together to get a value. It is different with basic for loops in Java, because java
+            has initialization expression, Boolean expression and step.</code>
+
+
+        <br>
+
+        <code>6. We tried to add some error checking to prevent non-numeric arguments being given. Therefore, we added
+            a <strong>case</strong> into the loop. It can execute the code when the value is [0-9] or present an error message when a
+            non- numerical value is given. As a final exercise in script writing, we created a script called pair, which
+            could add together pairs of arguments and output the results.</code>
+    </div>
+
+    <div class="content1">
+
+        <h3>Common commands</h3>
+
+    </div>
+
+    <div class="c1">
+        This part will intro some basic knowledge about processes and scripting:
+
+        <br>
+
+        <code><strong>ps:</strong> report a snapshot of the current processes.</code>
+
+        <br>
+
+        <code><strong>pgrep, pkill:</strong> look up or signal processes based on name and other attributes.</code>
+
+        <br>
+
+        <code><strong>top:</strong> the top program provides a dynamic real-time view of a running system.</code>
+
+        <br>
+
+        <code><strong>expr:</strong> the expr utility evaluates expression and writes the result on standard output.</code>
+
+        <br>
+
+        <code><strong>$():</strong> command substitution allows the output of a command to replace the command itself.</code>
+
+    </div>
+
+
+    <div class="content1">
+        <h3>Learning and thinking</h3>
+    </div>
+
+
+    <div class="c1">
+        This part mainly includes the significance of what I have learned for the future development, as well as my reflection:
+
+        <br>
+
+        <code>1. Through this lab, I have a further understanding of processes and scripting, especially learning
+            scripting language, which is very helpful for batch processing.
+            <br>
+            2. The advantage of this material is that it took us to some small projects of script processing. However,
+            the weak point is that many of the contents of this material are not easy to understand. Therefore, I
+            found some websites for further study. For example, a website called tutorialspoint is great.
+        </code>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="content1">
+        <h2>Processes</h2>
+    </div>
+
+    <div class="c1">
+
+        <span><strong>Processes</strong></span>
+        <br>
+
+        <span><code>Applications in a Linux environment are usually referred to as processes. This includes web
+                browsers, text editors, running scripts and everything else that could be considered an application.
+            </code></span>
+
+        <br>
+
+        <span><code><strong>ps</strong></code></span>
+
+        <br>
+
+        <span><code> ps - report a snapshot of the current processes.</code></span>
+
+        <br>
+
+        <span><code> ps displays information about a selection of the active processes. </code></span>
+
+        <br>
+
+        <pre class="sample"><code><span class="redtext"> $ ps [options] </span></code></pre>
+
+
+        <div class="c2">
+            <span><code><strong>PID</strong> process ID</code></span>
+            <br>
+            <span><code><strong>TTY</strong> the terminal associated with the process</code></span>
+            <br>
+            <span><code><strong>TIME</strong> the accumulated CPU time in [DD-]hh:mm:ss format</code></span>
+            <br>
+            <span><code><strong>CMD</strong> the executable name</code></span>
+            <br>
+        </div>
+
+
+        <span><code><strong>pgrep & pkill</strong></code></span>
+
+        <br>
+
+        <span><code> pgrep, pkill - look up or signal processes based on name and other attributes</code></span>
+
+        <br>
+
+
+        <pre class="sample"><code><span class="redtext"> $ pgrep [options] pattern </span></code></pre>
+
+        <pre class="sample"><code><span class="redtext"> $ pkill [options] pattern</span></code></pre>
+
+
+        <span><code><strong>grep</strong></code></span>
+
+        <br>
+
+        <span><code> grep - print lines matching a pattern</code></span>
+
+
+        <pre class="sample"><code><span class="redtext"> $ grep [OPTIONS] PATTERN [FILE...]</span></code></pre>
+        <pre class="sample"><code><span class="redtext"> $ grep [OPTIONS] [-e PATTERN | -f FILE] [FILE...]</span></code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+
+    <div class="content1">
+        <h2>Scripting</h2>
+    </div>
+
+
+    <div class="c1">
+
+        <span><code><strong>./runloop &</strong></code></span>
+
+        <br>
+
+        <span><code>This script starts a java file called loop. The loop repeat Picked up _JAVA_OPTIONS: -Xmx6g. It shows:</code></span>
+
+        <pre class="sample"><code> Picked up _JAVA_OPTIONS: -Xmx6g  <br> Picked up _JAVA_OPTIONS: -Xmx6g <br> Do not leave running, especially on Joshua. We know who you are :) <br> oing into infinite loop...</code></pre>
+
+
+        <span><code><strong>top</strong></code></span>
+        <br>
+        <span><code> The top program provides a dynamic real-time view of a running system.  It can display system
+                summary information as well as a list of processes or threads currently being managed by the Linux kernel.</code></span>
+
+        <pre class="sample"><code><span class="redtext"> $ top</span></code></pre>
+
+
+        <span><code><strong>expr</strong></code></span>
+        <br>
+        <span><code> expr -- evaluate expression </code></span>
+        <span><code> The expr utility evaluates expression and writes the result on standard output. </code></span>
+        <pre class="sample"><code><span class="redtext"> $ expr expression </span></code></pre>
+
+
+
+
+        <span><code><strong>The first line of a bash script</strong></code></span>
+        <br>
+        <span><code>The first line of a bash script should be #!/bin/sh.</code></span>
+
+        <br>
+        <br>
+
+
+
+
+        <span><code><strong>$() Command Substitution</strong></code></span>
+
+        <br>
+        <span><code>Command substitution allows the output of a command to replace the command itself. Bash performs
+                the expansion by executing the command and replacing the command substitution with the standard output
+                of the command, with any trailing newlines deleted.</code></span>
+
+        <pre class="sample"><code><span class="redtext"> $(command) <br> or <br> `command` </span></code></pre>
+
+        <span><code>Example:</code></span>
+        <br>
+        <pre class="sample"><code> $ echo $(date) <br> $ echo `date`</code></pre>
+        <pre class="sample"><code> $ TODAY=$(date) <br> $ echo "$TODAY"</code></pre>
+
+        <span><code><strong>Further Resources:</strong></code>
+                <br>
+                <code><a class="link" href="https://linuxhint.com/use_expansions_shell_script/" target="_blank" style="color:#404040;">How to Use $() and ${} Expansions in a Shell Script</a></code>
+                <br>
+                <code><a
+                        href="https://www.tutorialspoint.com/unix/shell_scripting.htm" target="_blank" style="color:#404040;">Shell Scripting Tutorial</a></code>
+                <br>
+            </span>
+
+
+
+
+    </div>
+
+
+
+
+
+
+</body>
+
+
+
+
+
+
+
+</html>

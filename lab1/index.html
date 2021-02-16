@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+	<meta charset="UTF-8">
+	<title>CS133 Lab1: Linux Essentials</title>
+	<link rel="stylesheet" href="../lab.css">
+</head>
+
+
+
+
+<body>
+
+	<div class="title">
+		<h1>CS133 Lab1: Linux Essentials</h1>
+	</div>
+
+	<form class="outline_form">
+		<fieldset class="outline">
+			<legend class="outline_title">Outline</legend>
+			<label class="outline_label">
+				<input type="checkbox"  />
+				<i class="check"></i>
+				<span>Command Line</span>
+			</label>
+			<label class="outline_label">
+				<input type="checkbox" />
+				<i class="check"></i>
+				<span>File, Directories and Permissions</span>
+			</label>
+			<label class="outline_label">
+				<input type="checkbox" />
+				<i class="check"></i>
+				<span>Setting Permissions Shorthand</span>
+			</label>
+			<label class="outline_label">
+				<input type="checkbox"  />
+				<i class="check"></i>
+				<span>HTML & CSS</span>
+			</label>
+		</fieldset>
+	</form>
+
+	<br>
+
+	<div class="content1">
+		<h2>Lab1: Linux Essentials</h2>
+	</div>
+
+	<div class="c1">
+		<span>In this lab, we learned the basics of command line, the permissions of files and directories, and the knowledge of HTML and CSS.</span>
+	</div>
+
+	<div class="content1">
+		<h3>Main content</h3>
+	</div>
+
+	<div class="c1">
+		This part mainly records the exercises in lab:
+
+		<br>
+		<code>1. We downloaded the <strong>lab1resources.zip</strong> from the DCS website and unzip it with the <strong>unzip</strong> command.</code>
+
+		<br>
+
+		<code>2. We made a directory using <strong>mkdir public_html/</strong> command. It was worth noting that we need to switch
+			to the relevant directory where we want to make the new directory by using <strong>cd</strong> command. And we learned how
+			to create a file by using the <strong>touch</strong> command. We used <strong>pwd</strong> to check which directory we were currently in.
+			And we tried to check that we had all files and folders in the right place and that they had appropriate
+			permissions by using <strong>ls -l</strong> command.</code>
+
+		<br>
+
+		<code>3. We learned how to change permissions of files and directories by using <strong>chmod</strong>, and later learned how
+			to quickly change permissions using octal. The command like <strong>chmod 600 /public_html/cs133</strong> can change the
+			permissions of cs133 to rw- -- -—.</code>
+
+		<br>
+
+		<code>4. Then we learned some knowledge about HTML and CSS. We learned how to add pictures and insert tables. Adding image is <strong>&#60img src="path/to/images"&#62</strong>
+			and a table using the <strong>&#60table&#62</strong> element, with row <strong>&#60tr&#62</strong>, header <strong>&#60th&#62</strong>,
+			and cell <strong>&#60td&#62</strong> tags. And we also learned how to modify the image style and how to add style to the table by using CSS.</code>
+
+	</div>
+
+
+	<div class="content1">
+		<h3>Common commands</h3>
+	</div>
+
+	<div class="c1">
+		This part mainly introduces some common commands under Linux operat- ing system:
+		<br>
+		<code><strong>cat:</strong> the cat command can list the contents of files to the terminal window.</code>
+		<br>
+
+		<code><strong>chmod:</strong> change access permissions, change mode.</code>
+
+		<br>
+
+		<code><strong>mv:</strong> move or rename files or directories.</code>
+
+		<br>
+
+		<code><strong>rm:</strong> remove files (delete/unlink).</code>
+
+		<br>
+
+		<code><strong>echo:</strong> display message on screen.</code>
+
+		<br>
+
+		<code><strong>cp:</strong>
+			copy one or more files to another location.
+		</code>
+
+		<br>
+		<code><strong>touch:</strong> change file timestamps, change the access and/or modification times of the specified files.
+		</code>
+
+
+		<br>
+
+		<code><strong>mkdir:</strong> create new folder(s), if they do not already exist.</code>
+
+		<br>
+		<code><strong>pwd:</strong> print working directory.</code>
+
+	</div>
+
+
+	<div class="content1">
+		<h3>Learning and thinking
+		</h3>
+	</div>
+
+	<div class="c1">
+
+		This part mainly includes the significance of what I have learned for the future development, as well as my reflection:
+		<br>
+
+		<code>1. The content of this lab is very helpful for me to be familiar with the Linux environment, and let me
+			understand how to build a web page. Meanwhile, it made me interested in the knowledge of front-end. After
+			this lab, I further learned the relevant knowledge of HTML, CSS and JavaScript.</code>
+		<br>
+		<code>2. The advantage of this material is that the content is easy to get started. The weak point of this material
+			is that it cannot further achieve interesting operation. It needs you to further study relevant knowledge.
+			Therefore, I need to refer to the information for further study.</code>
+	</div>
+
+	<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<div class="content1">
+		<h2>Command Line</h2>
+	</div>
+	<div class="c1">
+		<span><strong>cat</strong>: the cat command can list the contents of files to the terminal window. </span>
+		<br>
+		<span><code>Syntax:</code></span>
+		<br>
+		<span><code>cat [-AbeEnstTuv] [--help] [--version] fileName</code></span>
+		<br>
+		<span><code> -A, --show-all           equivalent to -vET</code></span>
+		<br>
+		<span><code> -b, --number-nonblank    number nonblank output lines</code></span>
+		<br>
+		<span><code> -E, --show-ends          display $ at end of each line</code></span>
+		<br>
+		<span><code>  -n, --number             number all output lines</code></span>
+
+
+		<br>
+		<br>
+
+
+		<span><strong>chmod</strong>: change access permissions, change mode.</span>
+		<br>
+		<span><code>Syntax:</code></span>
+		<br>
+		<span><code>chmod [-cfvR] [--help] [--version] mode file...</code></span>
+		<br>
+		<table class=tab1>
+			<tbody><tr>  <td><i> User</i></td>
+				<td><i>letter</i></td>
+			</tr>
+			<tr>  <td>The user who owns it</td>
+				<td class="code">u</td>
+			</tr>
+			<tr>  <td>Other users in the file's Group</td>
+				<td class="code">g</td>
+			</tr>
+			<tr>  <td>Other users not in the file's group</td>
+				<td class="code">o</td>
+			</tr>
+			<tr>
+				<td>All users</td>
+				<td class="code">a</td>
+			</tr>
+			</tbody></table>
+
+		<br>
+
+		<table class=tab1>
+			<tbody><tr>  <td><i> Permission</i></td>
+				<td><i>letter</i></td>
+			</tr>
+			<tr>  <td>Read</td>
+				<td class="code">r</td>
+			</tr>
+			<tr>  <td>Write</td>
+				<td class="code">w</td>
+			</tr>
+			<tr>  <td>Execute</td>
+				<td class="code">x</td>
+			</tr>
+			</tbody>
+		</table>
+		<br>
+
+		<span><strong>mv</strong>: move or rename files or directories.</span>
+		<br>
+		<span><code>Syntax:</code></span>
+		<br>
+		<span><code> mv [options]... Source Dest</code></span>
+		<br>
+		<span><code> mv [options]... Source... Directory</code></span>
+		<br>
+		<span><code> -b Make a backup of each file that would otherwise be overwritten or removed.</code></span>
+		<br>
+		<span><code> -f Remove existing destination files and never prompt the user.</code></span>
+		<br>
+		<span><code> -i Prompt whether to overwrite each existing destination file regardless of its permissions.</code></span>
+
+		<br>
+		<br>
+
+		<span><strong>rm</strong>: remove files (delete/unlink).</span>
+		<br>
+		<span><code>Syntax:</code></span>
+		<br>
+		<span><code> rm [options] name...</code></span>
+		<br>
+		<span><code> -i Prompt before every removal.</code></span>
+		<br>
+		<span><code> -r Remove directories and their contents recursively.</code></span>
+		<br>
+		<span><code> -f Ignore nonexistent files, never prompt.</code></span>
+
+		<br>
+		<br>
+
+		<span><strong>echo</strong>: display message on screen.</span>
+		<br>
+		<span><code>Syntax:</code></span>
+		<br>
+		<span><code>echo [options]... [String]...</code></span>
+		<br>
+		<span><code> -e  Enable interpretation of the following backslash-escaped characters in each String:</code></span>
+		<br>
+		<span><code>\n    New line</code></span>
+		<br>
+		<span><code>\c    Suppress trailing newline</code></span>
+		<br>
+		<span><code>\t    Horizontal tab</code></span>
+		<br>
+		<span><code>\v    Vertical tab</code></span>
+
+
+		<br>
+		<br>
+
+		<span><strong>unzip</strong>: list, test and extract compressed files in a ZIP archive.</span>
+		<br>
+		<span><code>Syntax:</code></span>
+		<br>
+		<span><code>unzip [-Z] [-cflptTuvz[abjnoqsCDKLMUVWX$/:^]] file[.zip] [file(s) ...] [-x xfile(s) ...] [-d exdir]</code></span>
+		<br>
+		<br>
+		<div class="box1">
+			<span><code>Example: $ unzip lab1resources.zip</code></span>
+		</div>
+
+
+
+		<br>
+		<br>
+
+		<span><strong>cp</strong>: copy one or more files to another location.</span>
+		<br>
+		<span><code>Syntax:</code></span>
+		<br>
+		<span><code>cp [options] source dest</code></span>
+		<br>
+		<span><code>cp [options] source... directory</code></span>
+		<br>
+		<span><code>-a               same as -dpR</code></span>
+		<br>
+		<span><code>-d        preserve links</code></span>
+		<br>
+		<span><code>-f                 remove existing destinations, never prompt</code></span>
+		<br>
+		<span><code>-i            prompt before overwrite</code></span>
+		<br>
+		<span><code>-p              preserve file attributes if possible</code></span>
+		<br>
+		<span><code>-r                      copy recursively</code></span>
+		<br>
+		<br>
+		<div class="box1">
+			<span><code>Example: $ cp test newtest</code></span>
+		</div>
+
+		<br>
+
+	</div>
+
+	<div class="content1">
+		<h2>File, Directories and Permissions</h2>
+	</div>
+	<div class="c1">
+		<span><strong>touch</strong>: change file timestamps, change the access and/or modification times of the specified files.</span>
+		<br>
+		<span><code>Syntax:</code></span>
+		<br>
+		<span><code>touch [options]... File...</code></span>
+		<br>
+		<br>
+
+		<div class="box1">
+			<span><code>Example: $ touch sample.txt</code></span>
+		</div>
+		<br>
+		<div class="box1">
+			<span><code>Example: $ touch {1..10}.txt</code></span>
+		</div>
+
+		<br>
+		<br>
+
+		<span><strong>mkdir</strong>: create new folder(s), if they do not already exist.</span>
+		<br>
+		<span><code>Syntax:</code></span>
+		<br>
+		<span><code>mkdir [Options] folder...</code></span>
+		<br>
+		<br>
+		<div class="box1">
+			<span><code>Example: $ mkdir cs133</code></span>
+		</div>
+
+		<br>
+		<div class="box1">
+			<span><code>Example: $ mkdir -p warwick/cs133</code></span>
+		</div>
+
+		<br>
+		<br>
+
+		<span><strong>cd</strong>: change the current working directory to a specific folder.</span>
+		<br>
+		<span><code>Syntax:</code></span>
+		<br>
+		<span><code>cd [dirName]</code></span>
+		<br>
+		<span><code><strong>~</strong> home</code></span> &nbsp; &nbsp;
+		<span><code><strong>. or ./</strong> current directory</code></span> &nbsp; &nbsp;
+		<span><code><strong>cd ..</strong> move up one folder</code></span> &nbsp;
+
+		<br>
+		<br>
+
+		<span><strong>pwd</strong>: print working directory.</span>
+		<br>
+		<span><code>Syntax:</code></span>
+		<br>
+		<span><code>pwd [--help][--version]</code></span>
+
+		<br>
+		<br>
+
+		<span><strong>ls</strong>: list information about files..</span>
+		<br>
+		<span><code>Syntax:</code></span>
+		<br>
+		<span><code>ls [Options]... [File]...</code></span>
+		<br>
+		<span><code>-a                  list all entries including those starting with a dot.</code></span>
+		<br>
+		<span><code>-l  list details</code></span>
+		<br>
+		<span><code>-t                        sort by modification time</code></span>
+		<br>
+		<span><code>-s                print size of each file, in blocks</code></span>
+
+		<br>
+		<br>
+
+		<span><strong>chmod</strong>: change access permissions, change mode.</span>
+		<br>
+		<span><code>Syntax:</code></span>
+		<br>
+		<span><code>The operator '+' causes the permissions selected to be added to the existing permissions of each file; '-' causes them to be removed;</code></span>
+		<br>
+		<span><code>u: the user who owns it</code></span>
+		<br>
+		<span><code>g: other users in the file's Group</code></span>
+		<br>
+		<span><code>o: other users in the file's Group</code></span>
+		<br>
+		<span><code>a: all users</code></span>
+
+		<br>
+		<br>
+
+		<span>Example1: allow write permission to everyone</span>
+
+		<div class="box1">
+			<span><code>$ chmod a+w file</code></span>
+		</div>
+
+		<br>
+		<span>Example2: deny execute permission to everyone</span>
+		<div class="box1">
+			<span><code>$ chmod a-x file</code></span>
+		</div>
+
+		<br>
+		<span>Example3: make a file readable and writable by the group and other</span>
+
+		<div class="box1">
+			<span><code>$ chmod go+rw file</code></span>
+		</div>
+
+		<br>
+
+	</div>
+
+	<div class="content1">
+		<h2>Setting Permissions Shorthand</h2>
+	</div>
+	<div class="c1">
+			<span>This process involves: representing a permission string using binary, where 1 and 0 are respectively
+				used to grant and restrict permission; and then representing the binary using octal.</span>
+
+		<ul>
+			<li>rwx --- --- = 111 000 000 = 700</li>
+			<li>rw- rw- rw- = 110 110 110 = 666</li>
+			<li>rwx rwx rwx = 111 111 111 = 777</li>
+		</ul>
+
+		<span>Example: allow all permission to everyone</span>
+		<div class="box1">
+			<span><code>$ chmod 777 file</code></span>
+		</div>
+
+		<br>
+
+	</div>
+
+	<div class="content1">
+		<h2>HTML & CSS</h2>
+	</div>
+	<div class="c1">
+		<span><strong>img</strong></span>
+		<br>
+		<span><code>Syntax:</code></span>
+		<br>
+		<span><code>&lt;img src=&quot;path/to/images&quot;&gt;</code></span>
+		<br>
+		<span><code>&lt;img src=&quot;path/to/images&quot;
+				alt=&quot;image description&quot;
+				style=&quot;width:XXXpx; height:XXXpx;&quot;&gt;
+			</code></span>
+
+		<br>
+		<br>
+
+		<span><strong>table</strong></span>
+		<br>
+		<span><code>Syntax:</code></span>
+		<br>
+
+		<span><code>A table using the &lt;table&gt; element, with row &lt;tr&gt;, header &lt;th&gt;, and cell &lt;td&gt; tags.</code></span>
+		<br>
+		<br>
+
+		<table width="100%">
+			<tr>
+				<th>header 1</th>
+				<th>header 2</th>
+			</tr>
+			<tr>
+				<td>cell 1</td>
+				<td>cell 2</td>
+			</tr>
+		</table>
+
+		<br>
+		<br>
+
+		<span><strong>CSS</strong></span>
+		<br>
+		<span><code>Cascading Style Sheets (CSS) is a stylesheet language used to alter the appearance of HTML documents.</code></span>
+		<br>
+		<span><code>Internal CSS involves placing code directly in the &lt;head&gt; section, using the &lt;style&gt; element.</code></span>
+		<br>
+		<span><code><strong>Useful Link:</strong></code>
+				<a class="link" href="https://www.w3schools.com/css/" target="_blank" style="color:#404040;">CSS Tutorial</a>
+			</span>
+		<br>
+
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>
